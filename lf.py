@@ -12,15 +12,19 @@ mainfolders = [["01. Static","02. Animate","03. Assets"],
 # Check for number of arguments
 # Need at least one - starting folder name
 
-if len(argv) == 1:
-    print "Please Enter a folder name:\n"
-    project = raw_input('> ')
-else:
-    project = argv[1]
+def FolderSetUp():
+    """Set Up Folder Structure"""
+    if len(argv) == 1:
+        print "Please Enter a folder name:\n"
+        project = raw_input('> ')
+    else:
+        project = argv[1]
 
-try:
-    os.makedirs(project)
-    for item in itertools.product(*mainfolders):
-        os.makedirs(project+"/"+os.path.join(*item))
-except OSError:
-    raise Exception("Folder Exists!")
+    try:
+        os.makedirs(project)
+        for item in itertools.product(*mainfolders):
+            os.makedirs(project+"/"+os.path.join(*item))
+    except OSError:
+        raise Exception("Folder Exists!")
+
+FolderSetUp()
